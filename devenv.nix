@@ -1,45 +1,22 @@
-{ pkgs, lib, config, inputs, ... }:
+{ pkgs, ... }:
 
-{
-  # https://devenv.sh/basics/
-  env.GREET = "devenv";
+let ghcVersion = "ghc96"; # Change if you need a different GHC version
+in {
+  languages.haskell.enable = true;
+  languages.haskell.package = pkgs.haskell.packages.${ghcVersion}.ghc;
 
-  # https://devenv.sh/packages/
-  packages = [ pkgs.git ];
+  packages = with pkgs.haskell.packages.${ghcVersion};
+    [ fourmolu ] ++ [
+      pkgs.sqlite # SQLite CLI for debugging
+    ];
 
-  # https://devenv.sh/languages/
-  # languages.rust.enable = true;
+  # Format-on-save integration
+  env.FOURMOLU_OPTIONS = "--stdin-input-file";
 
-  # https://devenv.sh/processes/
-  # processes.cargo-watch.exec = "cargo-watch";
-
-  # https://devenv.sh/services/
-  # services.postgres.enable = true;
-
-  # https://devenv.sh/scripts/
-  scripts.hello.exec = ''
-    echo hello from $GREET
-  '';
-
-  enterShell = ''
-    hello
-    git --version
-  '';
-
-  # https://devenv.sh/tasks/
-  # tasks = {
-  #   "myproj:setup".exec = "mytool build";
-  #   "devenv:enterShell".after = [ "myproj:setup" ];
-  # };
-
-  # https://devenv.sh/tests/
-  enterTest = ''
-    echo "Running tests"
-    git --version | grep --color=auto "${pkgs.git.version}"
-  '';
-
-  # https://devenv.sh/git-hooks/
-  # git-hooks.hooks.shellcheck.enable = true;
-
-  # See full reference at https://devenv.sh/reference/options/
+  # Run SQLite with `sqlite3 mydb.sqlite` for easy debugging
+  # shell.hooks.postShellHook = ''
+  #   echo "Haskell dev environment ready!"
+  #   echo "- SQLite available via 'sqlite3'"
+  #   echo "- Format Haskell code with 'fourmolu --mode inplace <file>'"
+  # '';
 }
