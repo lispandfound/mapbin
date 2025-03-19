@@ -30,6 +30,6 @@ heroSection = section ! class_ "py-12 h-screen  bg-gradient-to-r from-indigo-500
                                     H.span ! class_ "font-semibold" $ "Click to upload"
                                     H.span $ " or drag and drop"
                                 p ! class_ "text-xs text-gray-500" $ "GeoJSON files only"
-                            input ! A.id "dropzone-file" ! type_ "file" ! name "geoJson" ! class_ "hidden" ! accept ".geojson,application/geo+json"
+                            input ! A.id "dropzone-file" ! autocomplete "off" ! type_ "file" ! name "geoJson" ! class_ "hidden" ! accept ".geojson,application/geo+json"
                 button ! type_ "submit" ! class_ "w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md" $
                     "Upload Map"

@@ -26,9 +26,7 @@ navbar = nav ! class_ "bg-white shadow-md" $ do
     H.div ! class_ "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" $ do
         H.div ! class_ "flex justify-between items-center h-16" $ do
             H.div ! class_ "flex items-center" $ do
-                H.span ! class_ "text-xl font-bold text-indigo-600" $ "Mapbin"
-            H.div ! class_ "flex items-center" $ do
-                button ! class_ "bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md" $ "Upload New Map"
+                H.span ! class_ "text-xl font-bold text-indigo-600" $ H.a ! A.href "/" $ "Mapbin"
 
 -- Footer
 mapFooter :: Html

@@ -63,13 +63,13 @@ executable mapbin
     main-is:          Main.hs
 
     -- Modules included in this executable, other than Main.
-    other-modules: Views.Upload Views.Map Views.Structure
+    other-modules: Views.Upload Views.Map Views.Structure CLI
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.18.2.1, blaze-html, scotty, text, blaze-markup, mtl, http-types, uri-encode, geojson, aeson, bytestring
+    build-depends:    base ^>=4.18.2.1, blaze-html, scotty, text, blaze-markup, mtl, http-types, uri-encode, geojson, aeson, bytestring, wai-extra, uuid, random, optparse-applicative, directory, wai-middleware-static, filepath
 
     -- Directories containing source files.
     hs-source-dirs:   app
