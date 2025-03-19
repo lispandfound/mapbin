@@ -69,7 +69,7 @@ executable mapbin
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.18.2.1, blaze-html, scotty, text, blaze-markup, mtl, http-types, uri-encode
+    build-depends:    base ^>=4.18.2.1, blaze-html, scotty, text, blaze-markup, mtl, http-types, uri-encode, geojson, aeson, bytestring
 
     -- Directories containing source files.
     hs-source-dirs:   app
